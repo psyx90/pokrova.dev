@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* @apply overflow-hidden; */
+}
+
+.star-cross::before,
+.star-cross::after {
+  content: '';
+  position: absolute;
+  background-color: currentColor;
+}
+
+.star-cross::before {
+  width: 125%;
+  height: 1px;
+  top: 50%;
+  left: -12%;
+  transform: translateY(-50%);
+}
+
+.star-cross::after {
+  height: 125%;
+  width: 1px;
+  left: 50%;
+  top: -12%;
+  transform: translateX(-50%);
+}
+
+@layer utilities {
+  @keyframes starAnimation {
+    0% {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
+    }
+    25% {
+      transform: translate(5px, -5px) scale(1.2);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-5px, 5px) scale(1.5);
+      opacity: 1;
+    }
+    75% {
+      transform: translate(5px, -5px) scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(0, 0) scale(0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes nebulaAnimation {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translateY(0) scale(1);
+    }
+    25%,
+    75% {
+      opacity: 0.2;
+      transform: translateY(16px) scale(1.25);
+    }
+    50% {
+      opacity: 0.1;
+      transform: translateY(-24px) scale(1.05);
+    }
+  }
+
+  .star {
+    opacity: 0;
+    animation: starAnimation 10s infinite ease-in-out;
+  }
+
+  .nebula {
+    animation: nebulaAnimation 10s infinite ease-in-out;
+    filter: blur(40px);
+    opacity: 0;
+  }
+}
