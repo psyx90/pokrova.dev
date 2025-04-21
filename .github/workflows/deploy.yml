@@ -27,12 +27,11 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
       - name: Deploy to GitHub Pages
         run: npx gh-pages -d dist --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: 'github-actions[bot]'
+          GIT_AUTHOR_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+          GIT_COMMITTER_NAME: 'github-actions[bot]'
+          GIT_COMMITTER_EMAIL: 'github-actions[bot]@users.noreply.github.com'
