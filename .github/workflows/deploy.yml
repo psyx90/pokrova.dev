@@ -7,9 +7,10 @@ on:
 
 permissions:
   contents: write
+  pages: write # Required for deploying to GitHub Pages
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,11 +28,18 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist # Path to the build directory
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # Required for deploying to GitHub Pages
+      id-token: write # Required for authentication
+
+    steps:
       - name: Deploy to GitHub Pages
-        run: npx gh-pages -d dist --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: 'github-actions[bot]'
-          GIT_AUTHOR_EMAIL: 'github-actions[bot]@users.noreply.github.com'
-          GIT_COMMITTER_NAME: 'github-actions[bot]'
-          GIT_COMMITTER_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+        uses: actions/deploy-pages@v3
