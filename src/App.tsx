@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import './index.css';
 import Starfield from './Starfield';
+import profile from './assets/profile.json';
 
 interface TechStack {
   languages: string[];
@@ -9,105 +10,6 @@ interface TechStack {
   databases: string[];
   tools: string[];
 }
-
-const profile = {
-  name: 'Serhii Pokrova',
-  title: 'Senior Software Engineer',
-  location: 'Los Angeles, CA',
-  email: 'spokrova@outlook.com',
-  phone: '213-500-6526',
-  summary: `Senior Software Engineer with over 10 years of diverse IT experience and over 6 years in cloud-based architecture. Practical DevOps experience with AWS. Passionate about solving problems with simple and scalable solutions.`,
-
-  links: {
-    github: 'https://github.com/psyx90',
-    linkedin: 'https://linkedin.com/in/spokrova',
-    resume: 'https://drive.google.com/file/d/1vsz6q_mZKk34tMApp4l2ewdxI9EDPrjn',
-    certificates: [
-      {
-        title: 'Programming in HTML5 with JavaScript and CSS3',
-        url: 'https://www.youracclaim.com/badges/32bf2db3-0c99-45c4-9b69-0ddaca267a72',
-      },
-      {
-        title: 'MongoDB for Node.js Developers',
-        url: 'https://university.mongodb.com/course_completion/56db83a0-ee72-45ad-bc62-84c2f088/printable',
-      },
-      {
-        title: 'MongoDB Performance',
-        url: 'https://university.mongodb.com/course_completion/ba06bafe-1871-42c0-9785-216def5f/printable',
-      },
-    ],
-  },
-
-  techStack: {
-    languages: [
-      'TypeScript',
-      'JavaScript',
-      'NodeJS',
-      'SQL',
-      'HTML',
-      'CSS',
-      'Java',
-    ],
-    frameworks: [
-      'React',
-      'Angular',
-      'Redux',
-      'RxJS',
-      'AgGrid',
-      'MUI',
-      'Cypress',
-      'Spring',
-    ],
-    // libraries: ['Lodash', 'async.io', 'D3', 'Plotly', 'Socket.IO'],
-    databases: ['MongoDB', 'MySQL', 'MsSQL', 'MariaDB', 'Neo4j'],
-    tools: ['GitHub', 'JIRA', 'Postman', 'Jenkins', 'Docker', 'AWS', 'Webpack'],
-    // other: ['Agile/Scrum', 'CI/CD', 'RESTful', 'Mircoservices', 'WebSockets'],
-  },
-
-  education: {
-    degree: 'MS & BS in Mechanical Engineering and Robotics',
-    institution: 'Oles Honchar Dnipro National University, Ukraine',
-    url: 'https://www.dnu.dp.ua/en/physical_and_technical_faculty',
-  },
-
-  experience: [
-    {
-      title: 'Senior Software Engineer',
-      company: 'Luxoft USA',
-      duration: 'Oct 2019 – Present',
-      description:
-        'Lead React developer and team manager for cloud-based asset management tools.',
-    },
-    {
-      title: 'Senior Software Engineer',
-      company: 'Luxoft Eastern Europe Ltd.',
-      duration: 'Jan 2018 – Oct 2019',
-      description:
-        'Built cloud-based SaaS platforms for financial evaluations.',
-    },
-    {
-      title: 'Software Engineer',
-      company: 'SoftServe Inc.',
-      duration: 'Aug 2016 – Dec 2017',
-      description:
-        'Developed healthcare applications for dental clinic management.',
-    },
-    {
-      title: 'Software Engineer',
-      company: 'Cleveroad Inc.',
-      duration: 'Dec 2014 – Jun 2016',
-      description:
-        'Worked on social mobile apps, regulatory document portals, and event booking portals.',
-    },
-    {
-      title: 'Junior Software Engineer',
-      company: 'Various',
-      duration: 'Jul 2013 – Dec 2014',
-      description:
-        'Client-side CMS-based development and custom template/plugin creation.',
-    },
-  ],
-};
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -180,7 +82,7 @@ export default function App() {
         <ul className="flex flex-wrap gap-2 text-sm text-gray-200">
           {(Object.keys(profile.techStack) as (keyof TechStack)[]).map(
             (key) => (
-              <>
+              <Fragment key={key}>
                 {profile.techStack[key].map((tech) => (
                   <li
                     key={tech}
@@ -189,7 +91,7 @@ export default function App() {
                     <p>{tech}</p>
                   </li>
                 ))}
-              </>
+              </Fragment>
             )
           )}
         </ul>
@@ -201,13 +103,13 @@ export default function App() {
           }`}
         >
           {profile.experience.map((job) => (
-            <>
+            <Fragment key={job.company}>
               <li key={job.company}>
                 <strong>{job.title}</strong>, {job.company}{' '}
                 <em>({job.duration})</em>
               </li>
               <li className="mb-4">{job.description}</li>
-            </>
+            </Fragment>
           ))}
         </ul>
 
@@ -224,7 +126,7 @@ export default function App() {
         </p>
         <h3 className="text-lg font-semibold mt-6 mb-2">Certificates</h3>
         {profile.links.certificates.map((certificate) => (
-          <p className="text-sm">
+          <p key={certificate.title} className="text-sm">
             🎓{' '}
             <a
               href={certificate.url}
