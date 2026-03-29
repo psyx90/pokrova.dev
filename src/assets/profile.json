@@ -1,14 +1,14 @@
 {
   "name": "Serhii Pokrova",
-  "title": "Senior Software Engineer",
-  "location": "Los Angeles, CA",
+  "title": "Principal Software Engineer",
+  "location": "San Jose, CA",
   "email": "spokrova@outlook.com",
   "phone": "213-500-6526",
-  "summary": "Senior Software Engineer with over 10 years of diverse IT experience and over 6 years in cloud-based architecture. Practical DevOps experience with AWS. Passionate about solving problems with simple and scalable solutions.",
+  "summary": "Principal Software Engineer with over 12 years of diverse IT experience and over 8 years in cloud-based architecture. Practical DevOps experience with AWS. Passionate about solving problems with simple and scalable solutions.",
   "links": {
     "github": "https://github.com/psyx90",
     "linkedin": "https://linkedin.com/in/spokrova",
-    "resume": "https://drive.google.com/file/d/1vsz6q_mZKk34tMApp4l2ewdxI9EDPrjn",
+    "resume": "https://drive.google.com/file/d/1XFZljrxzv8bFJbjn1eiDkmX00WIqKBaS",
     "certificates": [
       {
         "title": "Programming in HTML5 with JavaScript and CSS3",
@@ -62,7 +62,7 @@
   },
   "experience": [
     {
-      "title": "Senior Software Engineer",
+      "title": "Principal Software Engineer",
       "company": "Luxoft USA",
       "duration": "Oct 2019 – Present",
       "description": "Lead React developer and team manager for cloud-based asset management tools."
