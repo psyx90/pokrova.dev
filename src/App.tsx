@@ -13,6 +13,8 @@ interface TechStack {
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const emailAddress = import.meta.env.VITE_EMAIL_ADDRESS ?? '';
+  const phoneDialTarget = import.meta.env.VITE_PHONE_DIAL ?? '';
 
   return (
     <div
@@ -45,8 +47,36 @@ export default function App() {
           {profile.summary}
         </p>
         <p className="text-sm mb-1">📍 {profile.location}</p>
-        <p className="text-sm mb-1">📧 {profile.email}</p>
-        <p className="text-sm mb-4">📱 {profile.phone}</p>
+        <p className="text-sm mb-1 flex items-center gap-2">
+          <span>📧</span>
+          {emailAddress ? (
+            <a
+              href={`mailto:${emailAddress}`}
+              className="text-blue-600 hover:underline"
+            >
+              Email me
+            </a>
+          ) : (
+            <span className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
+              Email unavailable
+            </span>
+          )}
+        </p>
+        <p className="text-sm mb-4 flex items-center gap-2">
+          <span>📱</span>
+          {phoneDialTarget ? (
+            <a
+              href={`tel:${phoneDialTarget}`}
+              className="text-blue-600 hover:underline"
+            >
+              Call me
+            </a>
+          ) : (
+            <span className={darkMode ? 'text-gray-400' : 'text-gray-600'}>
+              Phone unavailable
+            </span>
+          )}
+        </p>
 
         <div className="flex gap-4 mb-4">
           {profile.links.linkedin && (
@@ -95,7 +125,7 @@ export default function App() {
                   </li>
                 ))}
               </Fragment>
-            )
+            ),
           )}
         </ul>
 
