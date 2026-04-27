@@ -27,8 +27,8 @@ jobs:
 
       - name: Build app
         env:
-          VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL_ADDRESS }}
-          VITE_PHONE_DIAL: ${{ secrets.VITE_PHONE_DIAL }}
+          VITE_EMAIL_ADDRESS: ${{ vars.VITE_EMAIL_ADDRESS }}
+          VITE_PHONE_DIAL: ${{ vars.VITE_PHONE_DIAL }}
         run: npm run build
 
       - name: Upload artifact
