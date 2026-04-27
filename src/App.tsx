@@ -53,6 +53,7 @@ export default function App() {
             <a
               href={profile.links.linkedin}
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:underline text-blue-600"
             >
               LinkedIn
@@ -62,6 +63,7 @@ export default function App() {
             <a
               href={profile.links.github}
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:underline text-blue-600"
             >
               GitHub
@@ -71,6 +73,7 @@ export default function App() {
             <a
               href={profile.links.resume}
               target="_blank"
+              rel="noopener noreferrer"
               className="hover:underline text-blue-600"
             >
               Resume
@@ -119,6 +122,7 @@ export default function App() {
           <a
             href={profile.education.url}
             target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
             {profile.education.degree}, {profile.education.institution}
@@ -131,6 +135,7 @@ export default function App() {
             <a
               href={certificate.url}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-blue-600 hover:underline"
             >
               {certificate.title}
