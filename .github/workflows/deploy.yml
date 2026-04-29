@@ -25,6 +25,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Debug - Check env variables
+        env:
+          VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL_ADDRESS }}
+          VITE_PHONE_DIAL: ${{ secrets.VITE_PHONE_DIAL }}
+        run: |
+          echo "VITE_EMAIL_ADDRESS is set: ${VITE_EMAIL_ADDRESS:+yes}"
+          echo "VITE_PHONE_DIAL is set: ${VITE_PHONE_DIAL:+yes}"
+          echo "VITE_EMAIL_ADDRESS length: ${#VITE_EMAIL_ADDRESS}"
+          echo "VITE_PHONE_DIAL length: ${#VITE_PHONE_DIAL}"
+
       - name: Build app
         env:
           VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL_ADDRESS }}
