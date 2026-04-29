@@ -12,6 +12,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-actions
 
     steps:
       - name: Checkout repository
@@ -49,6 +50,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    environment: github-pages
     permissions:
       pages: write # Required for deploying to GitHub Pages
       id-token: write # Required for authentication
